@@ -17,10 +17,12 @@ export default function Answers({answers, selectedAnswer, answerState, onSelect}
 
             if(answerState === 'answered' && isSelected){
               cssClasses = 'selected'
+              console.log(answerState + "sono nell'if di answered")
             } 
 
-            if(answerState === 'correct' || answerState === 'wrong' && isSelected){
+            if((answerState === 'correct' || answerState === 'wrong') && isSelected){
               cssClasses = answerState; //quindi correct o wrong
+              console.log(answerState + "sono nell'if correct o wrong")
             }
 
             return (

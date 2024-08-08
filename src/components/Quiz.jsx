@@ -59,7 +59,7 @@ export default function Quiz() {
         />
         <h2>{questions[activeQuestionIndex].text}</h2>
         <Answers
-          key={`${activeQuestionIndex}-bis`} //same here, voglio lo shuffle all'interno di questo componente al cambio delle domande
+          key={`${activeQuestionIndex}-bis`} //same here, voglio lo shuffle all'interno di questo componente al cambio delle domande ma necessito di key differente da quella sopra
           answers={questions[activeQuestionIndex].answers}
           selectedAnswer={userAnswers[userAnswers.length - 1]}
           answerState={answerState}
