@@ -1,8 +1,8 @@
 import { useState, useCallback } from "react";
 import questions from "../questions";
 import QuestionTimer from "./QuestionTimer";
-import quizCompleted from "../assets/quiz-complete.png";
 import Answers from "./Answers";
+import Summary from "./Summary";
 
 export default function Quiz() {
   const [answerState, setAnswerState] = useState("");
@@ -45,10 +45,7 @@ export default function Quiz() {
 
   if (quizIsComplete) {
     return (
-      <div id="summary">
-        <img src={quizCompleted} alt="Trophy icon for completing quiz" />
-        <h2>Quiz Completed!</h2>
-      </div>
+      <Summary userAnswers={userAnswers} />
     );
   }
 

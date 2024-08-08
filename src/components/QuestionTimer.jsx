@@ -2,12 +2,9 @@ import { useEffect, useState } from "react";
 
 export default function QuestionTimer({ timeout, onTimeout, answerState }) {
   const [timeLeft, setTimeLeft] = useState(timeout);
-  console.log(timeLeft + " timeleft")
-  console.log(answerState + " answer stato")
 
   useEffect(() => {
     setTimeLeft(timeout)
-    console.log("setting timeout")
     const timer = setTimeout(() => {
       onTimeout();
     }, timeout);
@@ -18,7 +15,6 @@ export default function QuestionTimer({ timeout, onTimeout, answerState }) {
   }, [timeout, onTimeout]);
 
   useEffect(() => {
-    console.log("setting interval")
     const interval = setInterval(() => {
       setTimeLeft((prevState) => prevState - 100);
     }, 100);
