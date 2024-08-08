@@ -7,6 +7,11 @@ import Answers from "./Answers";
 export default function Quiz() {
   const [answerState, setAnswerState] = useState("");
   const [userAnswers, setUserAnswers] = useState([]);
+  let timer = 15000
+
+  if(answerState === "answered" || answerState === "correct" || answerState === "wrong"){
+    timer = 1000
+  }
 
   const activeQuestionIndex =
     answerState === "" ? userAnswers.length : userAnswers.length - 1; //se ho appena risposto voglio vedere ancora la stessa domanda
@@ -28,7 +33,7 @@ export default function Quiz() {
 
         setTimeout(() => {
           setAnswerState(""); //resetto lo state per procedere con la prossima domanda
-        }, 2000);
+        }, 1000);
       }, 1000);
     },
     [activeQuestionIndex]
@@ -54,8 +59,9 @@ export default function Quiz() {
         resettare la prop del timeout a 15000 così il timer rinizia */}
         <QuestionTimer
           key={activeQuestionIndex}
-          timeout={15000}
-          onTimeout={handleSkipAnswer}
+          timeout={timer}
+          onTimeout={answerState === ''? handleSkipAnswer : () => {}}
+          answerState={answerState}
         />
         <h2>{questions[activeQuestionIndex].text}</h2>
         <Answers
